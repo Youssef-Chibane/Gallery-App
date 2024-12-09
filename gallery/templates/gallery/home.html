@@ -17,46 +17,55 @@
         }
     </style>  
 </head>
-  <body class="m-5">
-    <div class="container-fluid">
-        <div class="row">
 
-          <nav class="col-md-3 col-lg-2 d-md-block sidebar">
-            <div class="card" style="width: 18rem;">
-                <div class="card-header">
-                    Categories
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">All</li>
+<body class="m-5">
+  <div class="container-fluid">
+      <div class="row">
 
-                  {% for category in categories %}
-                  <li class="list-group-item">{{ category.name }}</li>
-                  {% endfor %}
-
-                </ul>
+        <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+          <div class="card" style="width: 18rem;">
+              <div class="card-header">
+                  Categories
               </div>
-          </nav>
-    
-          <main class="col-md-9 ms-sm-auto col-lg-9 px-md-4">
-            <div class="row">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <a href="{% url 'Home' %}">All</a>
+                </li>
 
-              {% for image in images %}
-              <div class="col-md-4 mb-4">
-                <div class="card">
-                  <a href="{% url 'Show' image.id %}">
-                    <img src="{{ image.image.url }}" class="card-img-top image-thumbail" alt="...">
+                {% for category in categories %}
+                <li class=" list-group-item">
+                  <a href="{% url 'Home' %}?category={{category.name}}">
+                      {{category.name}}
                   </a>
-                  <div class="card-body">
-                    <p class="card-text">Category:  {{ image.category }}</p>
-                  </div>
+                </li>
+                {% endfor %}
+
+                <a href="{% url 'Add' %}" class="btn btn-dark btn-block btn-sm m-1">Add Photo</a>
+              </ul>
+            </div>
+        </nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-9 px-md-4">
+          <div class="row">
+
+            {% for image in images %}
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <a href="{% url 'Show' image.id %}">
+                  <img src="{{ image.image.url }}" class="card-img-top image-thumbail" alt="...">
+                </a>
+                <div class="card-body">
+                  <p class="card-text">Category:  {{ image.category }}</p>
                 </div>
               </div>
-              {% endfor %}
-
             </div>
-          </main>
-          
-        </div>
+            {% endfor %}
+
+          </div>
+        </main>
+        
       </div>
-  </body>
+    </div>
+</body>
+
 </html>
