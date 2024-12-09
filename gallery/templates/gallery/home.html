@@ -27,9 +27,12 @@
                     Categories
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">An item</li>
-                  <li class="list-group-item">A second item</li>
-                  <li class="list-group-item">A third item</li>
+                  <li class="list-group-item">All</li>
+
+                  {% for category in categories %}
+                  <li class="list-group-item">{{ category.name }}</li>
+                  {% endfor %}
+
                 </ul>
               </div>
           </nav>
@@ -37,30 +40,18 @@
           <!-- Main content -->
           <main class="col-md-9 ms-sm-auto col-lg-9 px-md-4">
             <div class="row">
+
+              {% for image in images %}
               <div class="col-md-3 mb-4">
                 <div class="card">
-                  <img src="https://www.newsnationnow.com/wp-content/uploads/sites/108/2022/07/Cat.jpg?w=876&h=493&crop=1" class="card-img-top image-thumbail" alt="...">
+                  <img src="{{ image.image.url }}" class="card-img-top image-thumbail" alt="...">
                   <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="card-text">Category:  {{ image.category }}</p>
                   </div>
                 </div>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card">
-                  <img src="https://media.4-paws.org/f/8/0/5/f8055215b5cdc5dee5494c255ca891d7b7d33cd1/Molly_006-2829x1886-2726x1886.jpg" class="card-img-top image-thumbail" alt="...">
-                  <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 mb-4">
-                <div class="card">
-                  <img src="https://www.alleycat.org/wp-content/uploads/2019/03/FELV-cat.jpg" class="card-img-top image-thumbail" alt="...">
-                  <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  </div>
-                </div>
-              </div>
+              {% endfor %}
+
             </div>
           </main>
           
